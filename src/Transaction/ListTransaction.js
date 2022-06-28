@@ -38,12 +38,10 @@ class ListTransaction extends React.Component {
 
   renderChart() {
     let data = [this.state.incomeAmount - (this.state.outcomFixedAmount + this.state.variableAmount), this.state.outcomFixedAmount , this.state.variableAmount ];
-    //console.log(this.transactionLoaded);
-    //console.log(data);
-    console.log(this.state.totalFixedAmount);
+
     
     if (this.transactionLoaded) {
-      //console.log(data);
+
       return (<MyChart labels={[
         'Verfügbar (' + (this.state.total / this.state.incomeAmount * 100).toFixed(2) + '%)',
         'Fixe Kosten (' + (this.state.outcomFixedAmount / this.state.incomeAmount * 100).toFixed(2) + '%)',
@@ -55,7 +53,6 @@ class ListTransaction extends React.Component {
   renderFixcostsChart()
   {
 
-    console.log(this.state.totalFixedAmount);
     let tfa = this.state.totalFixedAmount;
 
     let labels = [];
@@ -70,7 +67,6 @@ class ListTransaction extends React.Component {
     }
 
     if (this.transactionLoaded) {
-      //console.log(data);
       return (<MyChart labels={labels} data={amounts} />);
     }
   }
@@ -78,7 +74,7 @@ class ListTransaction extends React.Component {
   renderVarcostsChart()
   {
 
-    //console.log(this.state.totalFixedAmount);
+  
     let tfa = this.state.totalVarAmount;
 
     let labels = [];
@@ -93,7 +89,6 @@ class ListTransaction extends React.Component {
     }
 
     if (this.transactionLoaded) {
-      //console.log(data);
       return (<MyChart labels={labels} data={amounts} />);
     }
   }
@@ -175,7 +170,6 @@ class ListTransaction extends React.Component {
       });
       this.transactionLoaded = true;
 
-      //console.log(this.state);
 
     }).catch(error => {
       let responseCode = error.response.status;
@@ -247,8 +241,6 @@ class ListTransaction extends React.Component {
     let valVon = moment(document.getElementsByName("Von")[0].value).format("DD.MM.YYYY");
     let valBis = moment(document.getElementsByName("Bis")[0].value).format("DD.MM.YYYY");
     
-    
-    console.log("von: " + valVon + "bis: " + valBis);
     
     this.updateTransactions(valName, valVon, valBis);
   }

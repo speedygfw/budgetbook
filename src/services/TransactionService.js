@@ -1,13 +1,14 @@
 import axios from 'axios'
 import authHeader from './authHeader'
 import UserService from './UserService'
-const API_URL = 'http://hb-api.fwalle.de/'
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 class TransactionService {
 
     fetchTransactions(search, valFrom, valTo) {
         let ext = []
-        console.log(search)
+
         if (search !== undefined && search.length > 2) ext.push('name=' + search)
         if (valTo !== undefined) {
             ext.push('bookingDate%5Bbefore%5D=' + valTo)
@@ -75,7 +76,7 @@ class TransactionService {
                 name: cat.name,
                 '@type': 'Category',
             }
-            console.log(typeof cat)
+
             
 
             if (cat.id !== undefined) item['@id'] = cat['id'];

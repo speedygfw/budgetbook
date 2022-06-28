@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://hb-api.fwalle.de/";
+const API_URL = process.env.REACT_APP_API_URL;
 
 class AuthService {
   login(username, password) {

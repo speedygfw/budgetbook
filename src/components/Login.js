@@ -99,7 +99,6 @@ export default class Login extends Component {
 
   render() {
     let user = AuthService.getCurrentUser();
-    console.log(user);
     if (user !== null  && user.token.length > 0)
       return (
         <div>Eingeloggt als {AuthService.getCurrentUser().username}

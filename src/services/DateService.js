@@ -8,7 +8,7 @@ class DateService {
     const month = d.getMonth() + 1;
     
     let res = year.toString() + "-" + month.toString().paddingLeft("00") + "-" + date.toString().paddingLeft("00");
-    console.log(res);
+
     return res;
     }
     

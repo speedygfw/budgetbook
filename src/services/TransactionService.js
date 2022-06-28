@@ -1,7 +1,7 @@
 import axios from 'axios'
 import authHeader from './authHeader'
 import UserService from './UserService'
-const API_URL = 'https://localhost:8000/'
+const API_URL = 'http://hb-api.fwalle.de/'
 
 class TransactionService {
 
@@ -44,7 +44,7 @@ class TransactionService {
         h['Content-Type'] = 'application/ld+json'
         return axios({
             method: 'POST',
-            url: 'https://localhost:8000/api/bookings',
+            url: API_URL + 'api/bookings',
             headers: h,
             data: formData,
         })

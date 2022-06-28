@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:8000/";
+const API_URL = "http://hb-api.fwalle.de/";
 
 class AuthService {
   login(username, password) {
     return axios
-      .post(API_URL + "authentication_token", {
+      .post(API_URL + "api/login_check", {
         username,
         password
       })

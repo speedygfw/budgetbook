@@ -59,7 +59,7 @@ class ListTransaction extends React.Component {
     let amounts = [];
 
     for (let x in tfa) {
-      if (x == "Fixkosten")
+      if (x === "Fixkosten")
         continue;
       
       labels.push(x + " (" + (tfa[x].amount / this.state.outcomFixedAmount  * 100).toFixed(2) +"%)");
@@ -81,7 +81,7 @@ class ListTransaction extends React.Component {
     let amounts = [];
 
     for (let x in tfa) {
-      if (x == "Fixkosten")
+      if (x === "Fixkosten")
         continue;
       
       labels.push(x);

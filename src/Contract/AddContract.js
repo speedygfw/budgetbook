@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios  from 'axios';
 import ContractService from '../services/ContractService';
 import { FormErrors } from '../components/FormErrors';
 import DateService from '../services/DateService';
@@ -88,20 +87,7 @@ class AddContract extends Component {
         alert("Vertrag wurde angelegt.");
         window.location.href = "/contracts";
       });
-
-        // }
-        //this.props.addAppointment(tempApt);
-
-        // this.setState({
-        //     amount: '',
-        //     name: '',
-        //     startDate: '',
-        //     rotation: '',
-        //     type: '',
-        //     })
-
-    
-    
+     
     }
 
     renderRotation() {

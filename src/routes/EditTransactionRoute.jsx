@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import EditTransaction from "../Transaction/EditTransaction.js";
 
 export default function EditTransactionRoute() {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   return (
     <Container>

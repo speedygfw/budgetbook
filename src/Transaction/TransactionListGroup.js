@@ -1,8 +1,6 @@
 import React from 'react'
-import { Form } from 'react-bootstrap';
 import { ListGroup, ListGroupItem} from 'react-bootstrap';
 import Moment from 'react-moment';
-import moment from 'moment';
 import TransactionService from '../services/TransactionService';
 
 class TransactionsListGroup extends React.Component{

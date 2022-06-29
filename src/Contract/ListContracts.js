@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListGroup, ListGroupItem, Button, Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
 
 import { Link } from 'react-router-dom'
 
@@ -10,29 +10,14 @@ class ListContracts extends React.Component {
   constructor() {
     super()
     this.state = {
-      // myLocation: "München",
       myContracts: [],
       totalCostsMonthly: 0,
       totalCostsQuaterly: 0,
       totalIncomeMonthly: 0
     }
-    //this.deleteAppointment = this.deleteAppointment.bind(this);
   }
 
   componentDidMount() {
-    // fetch('https://localhost:8000/api/contracts.json')
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     if (!Array.isArray(result)) return 'results are not array'
-    //     const apts = result.map(item => {
-    //       item.Id = item.id;
-    //       delete item.id;
-    //       return item;
-    //     });
-    //     this.setState({
-    //       myContracts: apts
-    //     });
-    //   });
     ContractService.fetchContracts().then((response) => {
       let totalCostsMonthly = 0;
       let totalCostsQuaterly = 0;
@@ -90,12 +75,12 @@ class ListContracts extends React.Component {
   }
 
   filterMonthlyCosts(item) {
-    if (item.type === 1 && item.rotation == 0) return true;
+    if (item.type === 1 && item.rotation === 0) return true;
 
     return false;
   }
   filterQuaterlyCosts(item) {
-    if (item.type === 1 && item.rotation == 2) return true;
+    if (item.type === 1 && item.rotation === 2) return true;
 
     return false;
   }

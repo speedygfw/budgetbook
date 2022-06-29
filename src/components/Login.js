@@ -101,7 +101,7 @@ export default class Login extends Component {
     let user = AuthService.getCurrentUser();
     if (user !== null  && user.token.length > 0)
       return (
-        <div>Eingeloggt als {AuthService.getCurrentUser().username}
+        <div>Eingeloggt
           <button className="btn btn-primary" onClick={this.logout}> Ausloggen </button>
           </div>
       )

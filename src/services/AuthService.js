@@ -1,8 +1,11 @@
 import axios from "axios";
+import { useJwt } from "react-jwt";
+import { isExpired, decodeToken } from "react-jwt";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 class AuthService {
+
   login(username, password) {
     return axios
       .post(API_URL + "api/login_check", {
@@ -11,9 +14,13 @@ class AuthService {
       })
       .then(response => {
         if (response.data.token) {
-          response.data.id = "/api/users/1";
+          let d = decodeToken(response.data.token);
+          
+          console.log(d);
+          d.id = "/api/users/1";
+          d.token = response.data.token;
 
-          localStorage.setItem("user", JSON.stringify(response.data));
+          localStorage.setItem("user", JSON.stringify(d));
           localStorage.setItem("tokenExpired", JSON.stringify(false));
           
         }

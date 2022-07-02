@@ -249,7 +249,7 @@ class ListTransaction extends React.Component {
     let compVon = document.getElementsByName("Von")[0];
     let compBis = document.getElementsByName("Bis")[0];
     let valVon = moment(compVon.value).subtract(1, "month");
-    let valBis = moment(compBis.value).subtract(1, "month");
+    let valBis = moment(compBis.value).subtract(1, "month").endOf('month');
     let x = moment(valVon).format('YYYY-MM-DD');
     let y = moment(valBis).format('YYYY-MM-DD');
 
@@ -265,7 +265,7 @@ class ListTransaction extends React.Component {
     let compVon = document.getElementsByName("Von")[0];
     let compBis = document.getElementsByName("Bis")[0];
     let valVon = moment(compVon.value).add(1, "month");
-    let valBis = moment(compBis.value).add(1, "month");
+    let valBis = moment(compBis.value).add(1, "month").endOf('month');
     let x = moment(valVon).format('YYYY-MM-DD');
     let y = moment(valBis).format('YYYY-MM-DD');
 

@@ -33,6 +33,7 @@ class ListTransaction extends React.Component {
     this.renderChart = this.renderChart.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
+    this.renderCurrentMonth = this.renderCurrentMonth.bind(this);
     
   }
 
@@ -276,6 +277,31 @@ class ListTransaction extends React.Component {
     this.updateTransactions(valName, x, y);
 
   }
+  renderCurrentMonth()
+  {
+    
+    console.log("hello");
+    let now = new Date();
+
+    if (document.getElementsByName("Von")[0]== undefined)
+      return;
+    
+
+    let dVon = new Date(moment(document.getElementsByName("Von")[0].value).format("YYYY-MM-DD"));
+    
+    
+    let isCurrentMonth = false;
+
+    if (now.getMonth() === dVon.getMonth() && now.getFullYear() === dVon.getFullYear())
+      isCurrentMonth = true;
+    
+    if (isCurrentMonth === false)
+      return;
+    
+    let days = moment(dVon - now).format("DD");
+    return <div>({days} Tage. <strong>{(this.state.total / days).toFixed(2).toLocaleString()} € am Tag</strong>)</div>
+
+  }
 
  
   render() {
@@ -315,7 +341,8 @@ class ListTransaction extends React.Component {
         <br />
         
         <div className="row">
-                <h4>Verfügbar - {this.state.total.toLocaleString()} €</h4>
+          <div class="col-md-6"> <h4>Verfügbar - {this.state.total.toLocaleString()} €</h4> </div>
+          <div class="col-md-6">{this.renderCurrentMonth()}</div>
         <div className="row">
           <div className="col-md-6 alert-success">Einnahmen</div>
           <div className="col-md-6 alert-success">{this.state.incomeAmount.toLocaleString()} €</div>

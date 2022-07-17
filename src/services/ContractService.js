@@ -24,7 +24,7 @@ class ContractService {
         h["Content-Type"] = "application/ld+json";
         return axios({
             method: "POST",
-            url: "https://localhost:8000/api/contracts", 
+            url: API_URL + "api/contracts", 
             headers: h,
             data: userData}
             );

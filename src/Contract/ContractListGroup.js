@@ -21,6 +21,14 @@ class ContractListGroup extends Component
     
   }
 
+  editContract(id) {
+    // TransactionService.Transaction(id).then(() => {
+    //   window.location.reload();
+    // });
+    window.location.href = "/contracts/edit?id=" + id
+    
+  }
+
   getNames(categories) {
     if (categories === undefined)
       return;
@@ -69,7 +77,12 @@ class ContractListGroup extends Component
                   <div className="col-md-3"><small>{this.getNames(item.categories)}</small></div>
   
                   <div className="col-md-2 amount"><strong>{item.amount.toLocaleString()} €</strong></div>
-                  <div className="col-md-2">
+                  <div className="col-md-2 btn-group">
+                    
+                    <button className="btn btn-primary" onClick={() => {
+                      this.editContract(item.Id)
+                      }}>Edit</button>
+                      
                     <button onClick={() => {
                       this.onClick(item.Id)
                     }}>Löschen</button>

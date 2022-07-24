@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { FormErrors } from '../components/FormErrors'
 import DateService from '../services/DateService'
 
-export default class TransactionForm extends Component {
+export default class ContractForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       amount: 0,
       name: '',
-      bookingDate: DateService.toDateString(new Date()),
+      startDate: DateService.toDateString(new Date()),
       type: 1,
       formErrors: { name: '' },
       formValid: false,
@@ -54,8 +54,9 @@ export default class TransactionForm extends Component {
     let formData = {
       amount: this.state.amount,
       name: this.state.name,
-      bookingDate: this.state.bookingDate,
+      startDate: this.state.startDate,
       type: this.state.type,
+      rotation: this.state.rotation,
       categories: this.state.categories.map((item) => {
         item.id = item["@id"];
         return item;
@@ -72,11 +73,14 @@ export default class TransactionForm extends Component {
     if (this.props.data) {
       this.setState({
         amount: this.props.data.amount,
+        rotation: this.props.data.rotation,
         name: this.props.data.name,
-        bookingDate: this.props.data.bookingDate,
+        startDate: this.props.data.startDate,
         type: this.props.data.type,
-        categories: this.props.data.category,
-      })
+        categories: this.props.data.categories,
+      });
+
+      
     }
 
     // console.log(this.props.data);
@@ -155,7 +159,7 @@ export default class TransactionForm extends Component {
     return (
       <div className={'card textcenter mt-3 '}>
         <div className="apt-addheading card-header bg-primary text-white">
-          Transaktion hinzufügen
+          Vertrag hinzufügen
         </div>
 
         <div className="card-body">
@@ -182,6 +186,23 @@ export default class TransactionForm extends Component {
                 />
               </div>
             </div>
+
+            <div className="form-group form-row">
+              <label
+                className="col-md-2 col-form-label text-md-right"
+                htmlFor="rotation"
+                readOnly
+              >
+                Turnus
+              </label>
+              <div className="col-md-10">
+                <select value={this.state.rotation} className="form-control" name="rotation" id="rotation" onChange={this.handleSelectChange}>
+                    <option value="1">Monatlich</option>
+                    <option value="2">Vierteljährlich</option>
+                    <option value="3">Jährlich</option>
+                </select>
+              </div>
+                    </div>
 
             <div className="form-group form-row">
             <label
@@ -234,9 +255,9 @@ export default class TransactionForm extends Component {
                 <input
                   type="date"
                   className="form-control"
-                  name="bookingDate"
+                  name="startDate"
                   id="startDate"
-                  value={this.state.bookingDate}
+                  value={this.state.startDate}
                   onChange={this.handleChange}
                 />
               </div>
